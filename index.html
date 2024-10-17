@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scheduler</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- jQuery (required for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS (requires Popper.js and jQuery) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+
+    <!-- Schedule Header -->
+    <div class="header">
+      <div class="button-container">
+        <span class="arrow" id="prevDate">&lt;</span>
+        <span class="date-display" id="currentDate"></span>
+        <span class="arrow" id="nextDate">&gt;</span>
+      </div>
+      <button class="book-button" id="bookButton"><i class="fa-solid fa-bookmark"></i>&nbsp;&nbsp;Book</button>
+      <a href="./booking.html" class="bookings-link"><i class="fa-solid fa-clipboard-list"></i>&nbsp;&nbsp;My Bookings</a>
+      <button id="logoutButton"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;&nbsp;Logout</button> <!-- Logout Button Added -->
+    </div>
+
+    <!-- Schedule Grid -->
+    <div class="schedule-container" id="moogs-list">
+      <!-- Time Labels -->
+      <div class="time-label">Time</div>
+
+    </div>
+
+    <div class="schedule-container" id="schedule"></div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+  </body>
+</html>
