@@ -184,7 +184,7 @@ app.get('/api/bookings/all', async (req, res) => {
       { [currentDate]: [] },
       { [nextDate]: [] },
     ]);
-
+    console.log(moogBookings);
     // Populate the booking data
     bookings.forEach((booking) => {
       const moogIndex = parseInt(booking.computerId.replace('moog', '')); // Get moog index (00 -> 0, 01 -> 1, etc.)
