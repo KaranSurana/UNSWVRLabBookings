@@ -29,58 +29,57 @@ fetchBookings().then((data) => {
   // Call the fetch function on page load
   function addBlocks(imn) {
     let moogs_list = document.getElementById('moogs-list');
+    
+    // Clear existing moog labels to avoid duplication
+    moogs_list.innerHTML = "";
+    
+    // Add "Time" as the first block
+    const timeDiv = document.createElement('div');
+    timeDiv.className = 'time-label';
+    timeDiv.textContent = "Time";
+    moogs_list.appendChild(timeDiv);
+  
+    // Add moog labels
     for (let i = 0; i <= 11; i++) {
-        const div = document.createElement('div');
-        div.className = 'time-label';
-        div.textContent = `moog${i.toString().padStart(2, '0')}`;
-        moogs_list.appendChild(div);
-      }
+      const div = document.createElement('div');
+      div.className = 'time-label';
+      div.textContent = `moog${i.toString().padStart(2, '0')}`;
+      moogs_list.appendChild(div);
+    }
+  
+    // Your existing code for creating time slots
     for (let i = 0; i < timeSlots; i++) {
       const hour = Math.floor(i / 2) + startTime;
       const minutes = i % 2 === 0 ? "00" : "30";
-      const timeLabel = `${hour}:${minutes.padStart(2, "0")} ${
-        hour < 12 ? "AM" : "PM"
-      }`;
+      const timeLabel = `${hour}:${minutes.padStart(2, "0")} ${hour < 12 ? "AM" : "PM"}`;
       
-      // Add time label
       const timeDiv = document.createElement("div");
       timeDiv.className = "time-label";
       timeDiv.textContent = timeLabel;
       scheduleContainer.appendChild(timeDiv);
-
-      // Add blocks for each computer
+  
       for (let j = 0; j < 12; j++) {
         const blockDiv = document.createElement("div");
         blockDiv.className = "computer-block";
         blockDiv.dataset.time = timeLabel;
         blockDiv.dataset.computer = `moog${j}`;
         blockDiv.style.height = "30px";
-
+  
         const keys = Object.keys(bookings[j][imn]);
-
+  
         if (document.getElementById("currentDate").innerText == keys[0]) {
           if (Object.values(bookings[j][imn])[0].includes(timeLabel)) {
             blockDiv.classList.add("jmd");
             blockDiv.addEventListener("click",()=>{addPopup("Uh, Oh!","Sorry, this slot is already booked!")});
           }
         }
-
+  
         blockDiv.addEventListener("click", () => toggleHighlight(blockDiv));
-        // blockDiv.addEventListener('mouseover', () => {
-        //                 if (!blockDiv.classList.contains('selected')) {
-        //                     blockDiv.classList.add('selected');
-        //                 }
-        //             });
-
-        //             blockDiv.addEventListener('mouseout', () => {
-        //                 if (!blockDiv.classList.contains('clicked')) {  // Ensure block is not clicked
-        //                     blockDiv.classList.remove('selected');
-        //                 }
-        //             });
         scheduleContainer.appendChild(blockDiv);
       }
     }
   }
+
   const scheduleContainer = document.getElementById("schedule");
   const startTime = 6; // 6:00 AM
   const endTime = 23; // 11:00 PM
