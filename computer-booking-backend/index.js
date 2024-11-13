@@ -124,9 +124,11 @@ function parseTime(timeStr) {
   let [hours, minutes] = time.split(':').map(Number);
 
   // Return a Date object with today's date and the parsed time
-  const now = new Date();
-  now.setHours(hours, minutes, 0, 0); // Set hours and minutes to the parsed values
-  return now;
+  const now = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
+  const australianDate = new Date(now);
+  australianDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the parsed values
+  
+  return australianDate;
 }
 
 function getTimeIntervals(startStr, endStr, interval=30) {
@@ -167,7 +169,7 @@ function formatDate(date) {
 app.get('/api/bookings/all', async (req, res) => {
   try {
     // Get today's date
-      const today = new Date();
+      const today = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
       const currentDate = formatDate(today);
 
       // Get tomorrow's date
@@ -184,6 +186,7 @@ app.get('/api/bookings/all', async (req, res) => {
       { [currentDate]: [] },
       { [nextDate]: [] },
     ]);
+
     // Populate the booking data
     bookings.forEach((booking) => {
       const moogIndex = parseInt(booking.computerId.replace('moog', '')); // Get moog index (00 -> 0, 01 -> 1, etc.)
@@ -203,9 +206,8 @@ app.get('/api/bookings/all', async (req, res) => {
           }
           moogBookings[moogIndex][1][bookingDate].push(...timesArray); // Add to tomorrow's bookings
       }
-      console.log(moogBookings);
-
   });
+  console.log(moogBookings);
   
   
     
@@ -229,7 +231,7 @@ app.get('/api/bookings/user/:userId', async (req, res) => {
     }
 
     // Get today's date
-    const today = new Date();
+    const today = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
     const currentDate = formatDate(today); // Format as YYYY-MM-DD
 
     // Get tomorrow's date
