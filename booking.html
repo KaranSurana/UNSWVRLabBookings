@@ -260,7 +260,7 @@
     </div>
 
     <script>
-      const apiUrl = "http://localhost:5000/api";
+      const apiUrl = "https://unswvrlabbookings.onrender.com/api";
       const userId = localStorage.getItem("userId"); // Get the stored userId from localStorage
 
       async function fetchUserBookings() {
@@ -320,7 +320,7 @@
       async function deleteBooking(userId, date, startTime) {
         try {
           const response = await fetch(
-            "http://localhost:5000/api/bookings/delete",
+            "https://unswvrlabbookings.onrender.com/api/bookings/delete",
             {
               method: "DELETE",
               headers: {
