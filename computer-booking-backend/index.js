@@ -35,6 +35,10 @@ const bookingSchema = new mongoose.Schema({
 
 const Booking = mongoose.model('Booking', bookingSchema);
 
+function getAustralianDate(date) {
+  return new Date(date.toLocaleString("en-AU", { timeZone: "Australia/Sydney" }));
+}
+
 // Register Route
 app.post('/api/register', async (req, res) => {
   const { email, zid, fullName, password } = req.body;
@@ -169,13 +173,13 @@ function formatDate(date) {
 app.get('/api/bookings/all', async (req, res) => {
   try {
     // Get today's date
-      const today = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
+      const today = getAustralianDate(new Date());
       const currentDate = formatDate(today);
 
       // Get tomorrow's date
       const tomorrow = new Date(today);
       tomorrow.setDate(today.getDate() + 1);
-      const nextDate = formatDate(tomorrow);      
+      const nextDate = formatDate(getAustralianDate(tomorrow));      
 
     
     // Find bookings for today and tomorrow
@@ -230,14 +234,13 @@ app.get('/api/bookings/user/:userId', async (req, res) => {
       return `${year}-${month}-${day}`;
     }
 
-    // Get today's date
-    const today = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
+    const today = getAustralianDate();
     const currentDate = formatDate(today); // Format as YYYY-MM-DD
 
-    // Get tomorrow's date
+    // Get tomorrow's date in Australian time
     const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-    const nextDate = formatDate(tomorrow); // Format as YYYY-MM-DD
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const nextDate = formatDate(tomorrow);
 
     // Find bookings for the specific user
     const bookings = await Booking.find({ userId });
