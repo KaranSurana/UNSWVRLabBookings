@@ -29,6 +29,7 @@
     
     <div class="container" id="container">
 
+        <!-- Register form with password hint -->
         <div class="form-container sign-up">
             <form action="#">
                 <h1>Create Account</h1>
@@ -36,12 +37,20 @@
                 <input id="registerFullName" type="text" placeholder="Full Name">
                 <input id="registerZid" type="text" placeholder="zID">
                 <input id="registerEmail" type="email" placeholder="Email">
-                <input id="registerPassword" type="password" placeholder="Password">
+
+                <!-- Password field with info icon for hint -->
+                <div class="password-container">
+                    <input id="registerPassword" type="password" placeholder="Password">
+                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="right" 
+                       title="Create a strong password with at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character."></i>
+                </div>
+                
                 <input id="registerConfirmPassword" type="password" placeholder="Confirm Password">
                 <button id="registerSubmit">Sign Up</button>
             </form>
         </div>
 
+        <!-- Sign In form -->
         <div class="form-container sign-in">
             <form action="#">
                 <h1>Sign In</h1>
@@ -52,6 +61,7 @@
             </form>
         </div>
 
+        <!-- Toggle Panels for switching between forms -->
         <div class="toggle-container">
             <div class="toggle">
 
@@ -72,8 +82,13 @@
         </div>
     </div>
 
-
-
+    <!-- Initialize tooltip for password hint -->
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+        });
+    </script>
+    
     <script src="login.js"></script>
 </body>
 </html>
