@@ -91,7 +91,8 @@ function addPopup(text){
     document.body.appendChild(modal);
     $("#myModal").modal("show");
     document.getElementById("close-but").addEventListener("click", () => {
-    location.reload();
+        $("#myModal").modal("dispose"); // Dispose of the modal instance
+        $("#myModal").remove(); // Remove the modal element from the DOM
     });
 }
 
@@ -141,7 +142,7 @@ registerSubmit.addEventListener("click", async (e) => {
     console.log(!isValidEmail(email) , !isValidZPattern(zid) , !isValidName(fullName));
     
     if (!isValidEmail(email) || !isValidZPattern(zid) || !isValidName(fullName)) {
-        addPopup("Invalid Details");
+        addPopup("Invalid Email or zID");
         return;
     }
 
