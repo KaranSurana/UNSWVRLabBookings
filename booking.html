@@ -1,287 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNSW VR Lab Bookings</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNSW VR Lab Bookings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- jQuery (required for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap JS (requires Popper.js and jQuery) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: #f0f8ff;
-        margin: 0;
-        padding: 0;
+  <!-- jQuery (required for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap JS (requires Popper.js and jQuery) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Menu */
+    .navbar {
+      background: linear-gradient(to right, #333, #383735);
+      padding: 30px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #fbc02d, #ffa000);
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      position: absolute;
+      left: 15px;
+    }
+
+    .navbar a:hover {
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(to right, #333, #333);
+      border-radius: 6px;
+    }
+
+    /* Container Styling */
+    .container {
+      width: 80%;
+      padding: 20px;
+      margin: 50px auto;
+      background: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    /* Booking Card Styling */
+    .booking-card {
+      background: linear-gradient(to right, #333, #383735);
+
+
+      color: #fff;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      position: relative;
+    }
+
+    .booking-card:hover {
+      transform: translateY(-5px);
+      background-color: #76858f;
+    }
+
+    .booking-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .booking-details span {
+      font-weight: 600;
+    }
+
+    .date {
+      flex: 1;
+      color: #ecf0f1;
+    }
+
+    .times {
+      margin-top: 10px;
+    }
+
+    /* Delete Button Styling */
+    .delete-btn {
+      background-color: #e62a2a;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 15px;
+    }
+
+    .delete-btn i {
+      margin-right: 5px;
+    }
+
+    .right-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .no-bookings {
+      text-align: center;
+      color: #95a5a6;
+      font-size: 18px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
 
-      /* Navigation Menu */
-      .navbar {
-        background: linear-gradient(to right, #333, #383735);
-        padding: 15px;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-
-      .navbar h1 {
-        margin: 0;
-        font-size: 24px;
-      }
-
-      .navbar a {
-        text-decoration: none;
-        color: white;
-        font-size: 16px;
-        padding: 15px 20px;
-        background: linear-gradient(to right, #fbc02d, #ffa000);
-        border-radius: 6px;
-        transition: background-color 0.3s ease;
-      }
-
-      .navbar a:hover {
-        text-decoration: none;
-        color: white;
-        background: linear-gradient(to right, #333, #333);
-        border-radius: 6px;
-      }
-
-      /* Container Styling */
-      .container {
-        width: 80%;
-        padding: 20px;
-        margin: 50px auto;
-        background: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        animation: fadeIn 1s ease-out;
-      }
-
-      h2 {
-        text-align: center;
-        color: #2c3e50;
-        margin-bottom: 20px;
-        font-size: 28px;
-      }
-
-      /* Booking Card Styling */
-      .booking-card {
-        background: linear-gradient(to right, #333, #383735);
+    }
 
 
-        color: #fff;
-        padding: 20px;
-        margin: 10px 0;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, background-color 0.3s ease;
-        position: relative;
-      }
+    body {
+      font-family: 'Varela Round', sans-serif;
+    }
 
-      .booking-card:hover {
-        transform: translateY(-5px);
-        background-color: #76858f;
-      }
+    .modal-confirm {
+      color: #636363;
+      width: 325px;
+    }
 
-      .booking-details {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
+    .modal-confirm .modal-content {
+      padding: 20px;
+      border-radius: 5px;
+      border: none;
+    }
 
-      .booking-details span {
-        font-weight: 600;
-      }
+    .modal-confirm .modal-header {
+      border-bottom: none;
+      position: relative;
+    }
 
-      .date {
-        flex: 1;
-        color: #ecf0f1;
-      }
+    .modal-confirm h4 {
+      text-align: center;
+      font-size: 26px;
+      margin: 30px 0 -15px;
+    }
 
-      .times {
-        margin-top: 10px;
-      }
+    .modal-confirm .form-control,
+    .modal-confirm .btn {
+      min-height: 40px;
+      border-radius: 3px;
+    }
 
-      /* Delete Button Styling */
-      .delete-btn {
-        background-color: #e62a2a;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 15px;
-      }
+    .modal-confirm .close {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+    }
 
-      .delete-btn i {
-        margin-right: 5px;
-      }
+    .modal-confirm .modal-footer {
+      border: none;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 13px;
+    }
 
-      .right-section {
-        display: flex;
-        align-items: center;
-      }
+    .modal-confirm .icon-box {
+      color: #fff;
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      top: -70px;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      z-index: 9;
+      background: #5C6BC0;
+      background: linear-gradient(to right, #fbc02d, #ffa000);
 
-      .no-bookings {
-        text-align: center;
-        color: #95a5a6;
-        font-size: 18px;
-      }
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    .modal-confirm .icon-box i {
+      font-size: 56px;
+      position: relative;
+      top: 4px;
+    }
 
+    .modal-confirm.modal-dialog {
+      margin-top: 80px;
+    }
 
-      body {
-	font-family: 'Varela Round', sans-serif;
-}
-.modal-confirm {		
-	color: #636363;
-	width: 325px;
-}
-.modal-confirm .modal-content {
-	padding: 20px;
-	border-radius: 5px;
-	border: none;
-}
-.modal-confirm .modal-header {
-	border-bottom: none;   
-	position: relative;
-}
-.modal-confirm h4 {
-	text-align: center;
-	font-size: 26px;
-	margin: 30px 0 -15px;
-}
-.modal-confirm .form-control, .modal-confirm .btn {
-	min-height: 40px;
-	border-radius: 3px; 
-}
-.modal-confirm .close {
-	position: absolute;
-	top: -5px;
-	right: -5px;
-}	
-.modal-confirm .modal-footer {
-	border: none;
-	text-align: center;
-	border-radius: 5px;
-	font-size: 13px;
-}	
-.modal-confirm .icon-box {
-	color: #fff;		
-	position: absolute;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
-	top: -70px;
-	width: 95px;
-	height: 95px;
-	border-radius: 50%;
-	z-index: 9;
-	background: #5C6BC0;
-  background: linear-gradient(to right, #fbc02d, #ffa000);
+    .modal-confirm .btn {
+      color: #fff;
+      border-radius: 4px;
+      background: #5C6BC0;
+      background: linear-gradient(to right, #fbc02d, #ffa000);
 
-	padding: 15px;
-	text-align: center;
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-}
-.modal-confirm .icon-box i {
-	font-size: 56px;
-	position: relative;
-	top: 4px;
-}
-.modal-confirm.modal-dialog {
-	margin-top: 80px;
-}
-.modal-confirm .btn {
-	color: #fff;
-	border-radius: 4px;
-	background: #5C6BC0;
-  background: linear-gradient(to right, #fbc02d, #ffa000);
+      text-decoration: none;
+      transition: all 0.4s;
+      line-height: normal;
+      border: none;
+    }
 
-	text-decoration: none;
-	transition: all 0.4s;
-	line-height: normal;
-	border: none;
-}
-.modal-confirm .btn:hover, .modal-confirm .btn:focus {
-	background: #5C6BC0;
-  background: linear-gradient(to right, #fbc02d, #ffa000);
+    .modal-confirm .btn:hover,
+    .modal-confirm .btn:focus {
+      background: #5C6BC0;
+      background: linear-gradient(to right, #fbc02d, #ffa000);
 
-	outline: none;
-}
-.trigger-btn {
-	display: inline-block;
-	margin: 100px auto;
-}
+      outline: none;
+    }
 
-    </style>
-  </head>
-  <body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-      <h1>User Bookings</h1>
-      <a href="./index.html">Back to Home</a>
-    </div>
+    .trigger-btn {
+      display: inline-block;
+      margin: 100px auto;
+    }
+  </style>
+</head>
 
-    <div class="container">
-      <h2>Your Bookings</h2>
-      <div id="bookingsList"></div>
-    </div>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>User Bookings</h1>
+    <a href="./index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
 
-    <script>
-      const apiUrl = "https://unswvrlab-9ffee38cc9a9.herokuapp.com/api";
-      const userId = localStorage.getItem("userId"); // Get the stored userId from localStorage
+  <div class="container">
+    <h2>Your Bookings</h2>
+    <div id="bookingsList"></div>
+  </div>
 
-      async function fetchUserBookings() {
-        const bookingsList = document.getElementById("bookingsList");
+  <script>
+    const apiUrl = "https://unswvrlab-9ffee38cc9a9.herokuapp.com/api";
+    const userId = localStorage.getItem("userId"); // Get the stored userId from localStorage
 
-        try {
-          // Fetch user-specific bookings
-          const response = await fetch(`${apiUrl}/bookings/user/${userId}`);
-          const data = await response.json();
+    async function fetchUserBookings() {
+      const bookingsList = document.getElementById("bookingsList");
 
-          if (data && data.length > 0) {
-            data.forEach((moog, index) => {
-              moog.forEach((booking, dateIndex) => {
-                const date = Object.keys(booking)[0]; // Date in YYYY-MM-DD format
-                const times = booking[date];
+      try {
+        // Fetch user-specific bookings
+        const response = await fetch(`${apiUrl}/bookings/user/${userId}`);
+        const data = await response.json();
 
-                if (times.length > 0) {
-                  const bookingCard = document.createElement("div");
-                  bookingCard.classList.add("booking-card");
+        if (data && data.length > 0) {
+          data.forEach((moog, index) => {
+            moog.forEach((booking, dateIndex) => {
+              const date = Object.keys(booking)[0]; // Date in YYYY-MM-DD format
+              const times = booking[date];
 
-                  const bookingDetails = `
+              if (times.length > 0) {
+                const bookingCard = document.createElement("div");
+                bookingCard.classList.add("booking-card");
+
+                const bookingDetails = `
                                     <div class="booking-details">
                                         <span class="computer">Computer: moog${index}</span>
                                         <div class="right-section">
@@ -293,149 +317,150 @@
                                     </div>
                                     <div class="times">
                                         <span>Time Slots: ${times.join(
-                                          ", "
-                                        )}</span>
+                  ", "
+                )}</span>
                                     </div>
                                 `;
 
-                  bookingCard.innerHTML = bookingDetails;
-                  bookingsList.appendChild(bookingCard);
-                }
-              });
+                bookingCard.innerHTML = bookingDetails;
+                bookingsList.appendChild(bookingCard);
+              }
             });
-          } else {
-            bookingsList.innerHTML =
-              "<p class='no-bookings'>You have no bookings yet!</p>";
-          }
-        } catch (error) {
-          console.error("Error fetching bookings:", error);
+          });
+        } else {
           bookingsList.innerHTML =
-            "<p class='no-bookings'>Unable to fetch bookings. Please try again later.</p>";
+            "<p class='no-bookings'>You have no bookings yet!</p>";
         }
+      } catch (error) {
+        console.error("Error fetching bookings:", error);
+        bookingsList.innerHTML =
+          "<p class='no-bookings'>Unable to fetch bookings. Please try again later.</p>";
       }
+    }
 
-      // Fetch bookings when the page loads
-      fetchUserBookings();
+    // Fetch bookings when the page loads
+    fetchUserBookings();
 
-      async function deleteBooking(userId, date, startTime) {
-        try {
-          const response = await fetch(
-            "https://unswvrlab-9ffee38cc9a9.herokuapp.com/api/bookings/delete",
-            {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ userId, date, startTime }),
-            }
-          );
-
-          const data = await response.json();
-
-          if (response.ok) {
-            location.reload(); // Refresh the page to show updated bookings
-          } else {
-            alert(`Error: ${data.message}`);
+    async function deleteBooking(userId, date, startTime) {
+      try {
+        const response = await fetch(
+          "https://unswvrlab-9ffee38cc9a9.herokuapp.com/api/bookings/delete",
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId, date, startTime }),
           }
-        } catch (error) {
-          console.error("Error deleting booking:", error);
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          location.reload(); // Refresh the page to show updated bookings
+        } else {
+          alert(`Error: ${data.message}`);
         }
+      } catch (error) {
+        console.error("Error deleting booking:", error);
       }
+    }
 
 
-      function addPopup(text1, text2,date, startTime){
-    const modal = document.createElement("div");
-    modal.id = "myModal";
-    modal.classList.add("modal", "fade");
+    function addPopup(text1, text2, date, startTime) {
+      const modal = document.createElement("div");
+      modal.id = "myModal";
+      modal.classList.add("modal", "fade");
 
-    // Create modal dialog
-    const modalDialog = document.createElement("div");
-    modalDialog.classList.add("modal-dialog", "modal-confirm");
+      // Create modal dialog
+      const modalDialog = document.createElement("div");
+      modalDialog.classList.add("modal-dialog", "modal-confirm");
 
-    // Create modal content
-    const modalContent = document.createElement("div");
-    modalContent.classList.add("modal-content");
+      // Create modal content
+      const modalContent = document.createElement("div");
+      modalContent.classList.add("modal-content");
 
-    // Create modal header
-    const modalHeader = document.createElement("div");
-    modalHeader.classList.add("modal-header");
+      // Create modal header
+      const modalHeader = document.createElement("div");
+      modalHeader.classList.add("modal-header");
 
-    // Create icon box
-    const iconBox = document.createElement("div");
-    iconBox.classList.add("icon-box", "over-all");
+      // Create icon box
+      const iconBox = document.createElement("div");
+      iconBox.classList.add("icon-box", "over-all");
 
-    // Create icon (material-icons)
-    const icon = document.createElement("i");
-    icon.classList.add("material-icons");
-    icon.innerHTML = "&#xE000;"; // Close icon
+      // Create icon (material-icons)
+      const icon = document.createElement("i");
+      icon.classList.add("material-icons");
+      icon.innerHTML = "&#xE000;"; // Close icon
 
-    // Append icon to icon box
-    iconBox.appendChild(icon);
+      // Append icon to icon box
+      iconBox.appendChild(icon);
 
-    // Create modal title
-    const modalTitle = document.createElement("h4");
-    modalTitle.classList.add("modal-title", "w-100");
-    modalTitle.textContent = text1;
+      // Create modal title
+      const modalTitle = document.createElement("h4");
+      modalTitle.classList.add("modal-title", "w-100");
+      modalTitle.textContent = text1;
 
-    // Append icon box and modal title to modal header
-    modalHeader.appendChild(iconBox);
-    modalHeader.appendChild(modalTitle);
+      // Append icon box and modal title to modal header
+      modalHeader.appendChild(iconBox);
+      modalHeader.appendChild(modalTitle);
 
-    // Create modal body
-    const modalBody = document.createElement("div");
-    modalBody.classList.add("modal-body");
+      // Create modal body
+      const modalBody = document.createElement("div");
+      modalBody.classList.add("modal-body");
 
-    // Create modal body text
-    const modalBodyText = document.createElement("p");
-    modalBodyText.classList.add("text-center");
-    modalBodyText.textContent = text2;
+      // Create modal body text
+      const modalBodyText = document.createElement("p");
+      modalBodyText.classList.add("text-center");
+      modalBodyText.textContent = text2;
 
-    // Append modal body text to modal body
-    modalBody.appendChild(modalBodyText);
+      // Append modal body text to modal body
+      modalBody.appendChild(modalBodyText);
 
-    // Create modal footer
-    const modalFooter = document.createElement("div");
-    modalFooter.classList.add("modal-footer");
+      // Create modal footer
+      const modalFooter = document.createElement("div");
+      modalFooter.classList.add("modal-footer");
 
-    // Create OK button
-    const okButton = document.createElement("button");
-    okButton.classList.add("btn", "btn-danger", "btn-block");
-    okButton.id = "close-but";
-    okButton.setAttribute("data-dismiss", "modal");
-    okButton.textContent = "OK";
+      // Create OK button
+      const okButton = document.createElement("button");
+      okButton.classList.add("btn", "btn-danger", "btn-block");
+      okButton.id = "close-but";
+      okButton.setAttribute("data-dismiss", "modal");
+      okButton.textContent = "OK";
 
-    // Append OK button to modal footer
-    modalFooter.appendChild(okButton);
+      // Append OK button to modal footer
+      modalFooter.appendChild(okButton);
 
-    // Append header, body, and footer to modal content
-    modalContent.appendChild(modalHeader);
-    modalContent.appendChild(modalBody);
-    modalContent.appendChild(modalFooter);
+      // Append header, body, and footer to modal content
+      modalContent.appendChild(modalHeader);
+      modalContent.appendChild(modalBody);
+      modalContent.appendChild(modalFooter);
 
-    // Append modal content to modal dialog
-    modalDialog.appendChild(modalContent);
+      // Append modal content to modal dialog
+      modalDialog.appendChild(modalContent);
 
-    // Append modal dialog to modal
-    modal.appendChild(modalDialog);
+      // Append modal dialog to modal
+      modal.appendChild(modalDialog);
 
-    // Append modal to the body of the document
-    document.body.appendChild(modal);
-    $("#myModal").modal("show");
-    document.getElementById("close-but").addEventListener("click", () => {
+      // Append modal to the body of the document
+      document.body.appendChild(modal);
+      $("#myModal").modal("show");
+      document.getElementById("close-but").addEventListener("click", () => {
         deleteBooking(localStorage.getItem("userId"), date, startTime);
-    //   location.reload();
-    });
-  }
-
-      // Example usage when clicking a button to delete a booking
-      document.addEventListener("click", (event) => {
-        if (event.target.classList.contains("delete-btn")) {
-          const userId = localStorage.getItem("userId"); // Get the userId from localStorage
-          const date = event.target.getAttribute("data-date"); // Get date from button attribute
-          const startTime = event.target.getAttribute("data-starttime"); // Get start time from button attribute
-          addPopup("Confirmation","Are you sure?",date, startTime);
-        }
+        //   location.reload();
       });
-    </script>
-  </body>
+    }
+
+    // Example usage when clicking a button to delete a booking
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("delete-btn")) {
+        const userId = localStorage.getItem("userId"); // Get the userId from localStorage
+        const date = event.target.getAttribute("data-date"); // Get date from button attribute
+        const startTime = event.target.getAttribute("data-starttime"); // Get start time from button attribute
+        addPopup("Confirmation", "Are you sure?", date, startTime);
+      }
+    });
+  </script>
+</body>
+
 </html>
