@@ -8,7 +8,7 @@ async function fetchBookings() {
   }
 
   // Fetch bookings from API
-  const response = await fetch("https://unswvrlabbookings.onrender.com/api/bookings/all");
+  const response = await fetch("https://unswvrlab-9ffee38cc9a9.herokuapp.com/api/bookings/all");
   const bookings = await response.json();
 
   // Fetch NUM_SLOTS from config.json
@@ -404,7 +404,7 @@ fetchBookings().then((data) => {
       let endTime = sortedTimes[sortedTimes.length - 1];
       let stringDate = document.getElementById("currentDate").innerText;
       let userId = localStorage.getItem("userId");
-      const response = await fetch("https://unswvrlabbookings.onrender.com/api/book", {
+      const response = await fetch("https://unswvrlab-9ffee38cc9a9.herokuapp.com/api/book", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
