@@ -100,7 +100,7 @@ function addPopup(text){
 const registerSubmit = document.getElementById("registerSubmit");
 const loginSubmit = document.getElementById("loginSubmit");
 
-const apiUrl = "https://unswvrlabbookings.onrender.com/api"; // Your backend API URL
+const apiUrl = "https://unswvrlab-9ffee38cc9a9.herokuapp.com/api"; // Your backend API URL
 
 // 1. Email validation
 function isValidEmail(email) {
