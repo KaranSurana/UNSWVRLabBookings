@@ -260,7 +260,7 @@
     </div>
 
     <script>
-      const apiUrl = "https://unswvrlabbookings.onrender.com/api";
+      const apiUrl = "https://unswvrlab-9ffee38cc9a9.herokuapp.com/api";
       const userId = localStorage.getItem("userId"); // Get the stored userId from localStorage
 
       async function fetchUserBookings() {
@@ -320,7 +320,7 @@
       async function deleteBooking(userId, date, startTime) {
         try {
           const response = await fetch(
-            "https://unswvrlabbookings.onrender.com/api/bookings/delete",
+            "https://unswvrlab-9ffee38cc9a9.herokuapp.com/api/bookings/delete",
             {
               method: "DELETE",
               headers: {
